@@ -1,38 +1,45 @@
 import React,{useState, useEffect} from 'react'
 import axios from 'axios'
 
-const PokeApiCall = () => {
+const PokeApiCall = (props) => {
     const [llamarPokes, setllamarPokes] = useState([]);
     const [idPoke, setIdPoke] =useState([]);
-    const [btnClick, setBtnClick] = useState(false);
+    const [inputPoke, setInputPoke] = useState();
 
     function handleChange (e){
-        setIdPoke([e.target.value])
+        setInputPoke([e.target.value])
+        console.log('Input: ',inputPoke );
         // setllamarPokes(e.target.value);
         // setBtnClick(false);
-        // // traerPokes(id);
-        
+        // // traerPokes(id);       
     }
 
-        useEffect((id) => {
+    const handleSubmit = (e, inputPoke) =>{
+        e.preventDefault();
+        setIdPoke(inputPoke)
+        console.log('idPoke: ',idPoke );
+        // props.onSubmit({
+        //     idPoke: input
+        // })
+    }
+
+        useEffect((idPoke) => {
             
             console.log(`id ${idPoke}`);
-            console.log(llamarPokes);
-            btnClick == true ?
-                // axios.get(`https://pokeapi.co/api/v2/pokemon/149`)
-                axios.get(`https://pokeapi.co/api/v2/pokemon/${idPoke}`)
-                .then(function (response) {
-                    setllamarPokes(response.data);
-                    // handle success
-                    // console.log(response);
-                    console.log(llamarPokes)
-                    setBtnClick(false);
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                })      
-            : console.log("No se escribió un Id")
+            console.log('Pokes', llamarPokes);
+
+            // axios.get(`https://pokeapi.co/api/v2/pokemon/149`)
+            axios.get(`https://pokeapi.co/api/v2/pokemon/${idPoke}`)
+            .then(function (response) {
+                setllamarPokes(response.data);
+                // handle success
+                // console.log(response);
+                console.log(llamarPokes)
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })      
 
         },
 
@@ -42,8 +49,8 @@ const PokeApiCall = () => {
 
     return(
         <div>
-            <input onChange={handleChange}></input>
-            <button onClick={() => setBtnClick(true)}>Buscar Pokemon</button>
+            <input onChange={handleChange} value={inputPoke}></input>
+            <button onClick={handleSubmit}>Buscar Pokemon</button>
             {llamarPokes.length > 0
             ?<>
             <div>

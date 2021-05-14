@@ -1,9 +1,8 @@
 import Listas from './Lista/Listas'
 import Home from './Home'
-import PokeAPI from './PokeApiCall'
 import PokeApiCall from './PokeApiCall'
-
-
+import LittleForm from './Ejemplitos/LittleForm'
+import PokeAPI from './Ejemplitos/PokeAPI'
 
 
 function App() {
@@ -12,7 +11,9 @@ function App() {
     <div className="App">
       {/* <Listas/> */}
       {/* <Home/> */}
-    <PokeApiCall/>
+    {/* <PokeApiCall/> */}
+    <PokeAPI/>
+    {/* <LittleForm/> */}
     </div>
   );
 }
