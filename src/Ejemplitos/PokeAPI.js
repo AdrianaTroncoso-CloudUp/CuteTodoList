@@ -24,14 +24,14 @@ const PokeAPI = (props) => {
             setllamarPokes(response.data);
             // handle success
             // console.log(response);
-            console.log(llamarPokes)
+            console.log('Poke obtenido: ',llamarPokes)
         })
         .catch(function (error) {
             // handle error
             console.log(error);
         })      
 
-    })
+    },[idPoke])
     
 
 
@@ -39,14 +39,20 @@ const PokeAPI = (props) => {
         <div>
             <input ref={inputPoke}></input>
             <button onClick={handleChange}>Buscar Pokemon</button>
-            {llamarPokes.length > 0
-            ?<>
+            {console.log('Imprimier Poke obtenido: ',llamarPokes)}
+            {console.log('IdPoke... : ',idPoke)}
+            {(idPoke == null || idPoke.length === 0 )?
+            <h1>Pokemon no cargado</h1> :
+            ((llamarPokes.name == null || llamarPokes.name.length === 0 ) ? 
+             <h1>Pokemon no cargado.</h1> :
+            <>
             <div>
                 <h1>Estado: {llamarPokes.name}</h1>
                 <div><img src={llamarPokes.sprites.front_default}/></div>
             </div>
-            </>
-            : <h1>Pokemon no cargado</h1>}
+            </>)
+            
+            }
             
         </div>
     )
