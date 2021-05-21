@@ -1,0 +1,20 @@
+/* function App() {
+
+    console.log("Rendering App...");
+    const click_ref = React.useRef(null);
+    
+    React.useEffect(()=>{
+      function handleClick() {
+        console.log("Running handleClick defined inside useEffect()...");
+      }
+      console.log("Updating click_ref...");
+      click_ref.current = handleClick;
+    },[]);
+  
+    return(
+      <React.Fragment>
+        <div>App</div>
+        <button onClick={()=>click_ref.current()}>Click</button>
+      </React.Fragment>
+    );
+  } */
