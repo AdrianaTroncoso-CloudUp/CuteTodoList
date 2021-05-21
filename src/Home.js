@@ -28,11 +28,9 @@ function Home() {
     const limitPokes = rowPokes * colPokes;
     
 
-    // console.log('All Pokes: ',allPokes)
-    // console.log('prev url: ', prevUrl);
-    // console.log('next url: ', nextUrl);
-    // console.log('responsePoke: ',responsePoke);
-    
+    console.log('All Pokes: ',allPokes)
+    console.log('prev url: ', prevUrl);
+    console.log('next url: ', nextUrl);    
     
     useEffect(() => {
         console.log('Obteniendo Pokes (inside useEffect)')
